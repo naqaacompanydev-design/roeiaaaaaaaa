@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>رؤية كلين | تنظيف وعزل الخزانات</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#122220;
+    --teal-900:#163C40;
+    --teal-800:#1B4A4F;
+    --teal-600:#296B70;
+    --water-500:#3E93A6;
+    --sand-100:#F6EFE2;
+    --sand-200:#EBDFC8;
+    --copper-600:#C1592E;
+    --copper-700:#A44A24;
+    --paper:#FBF9F3;
+    --white:#FFFFFF;
+    --line:#D9CFB8;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(78px + env(safe-area-inset-top,0px));}
+  html,body{height:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block;}
+  h1,h2,h3{font-family:'Cairo',sans-serif;line-height:1.35;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:24px;}
+  .scrollx{overflow-x:auto;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    padding-top:env(safe-area-inset-top,0px);
+    background:var(--teal-900);
+    color:var(--sand-100);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .topbar-inner{
+    max-width:1120px;margin-inline:auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{
+    width:38px;height:38px;flex:none;border-radius:9px;
+    background:linear-gradient(160deg,var(--water-500),var(--teal-600));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .brand-mark svg{width:20px;height:20px;}
+  .brand-name{font-family:'Cairo',sans-serif;font-weight:800;font-size:1.02rem;color:var(--white);white-space:nowrap;}
+  .brand-sub{display:block;font-size:.68rem;color:var(--sand-200);font-weight:500;margin-top:1px;}
+  .topbar-phone{
+    display:flex;align-items:center;gap:8px;
+    background:var(--copper-600);
+    color:var(--white);
+    padding:9px 16px;border-radius:9px;
+    font-weight:700;font-family:'Cairo',sans-serif;
+    font-size:.98rem;white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .topbar-phone:hover{background:var(--copper-700);}
+  .topbar-phone svg{width:17px;height:17px;flex:none;}
+  .topbar-phone span{direction:ltr;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--teal-900);
+    color:var(--sand-100);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.055) 1px, transparent 0);
+    background-size:22px 22px;
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1.15fr .85fr;
+    gap:48px;align-items:center;
+    padding:64px 24px 72px;
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;padding-top:44px;padding-bottom:40px;gap:36px;}
+  }
+  .eyebrow-line{
+    display:flex;align-items:center;gap:10px;
+    color:var(--water-500);font-weight:600;font-size:.95rem;margin-bottom:18px;
+  }
+  .eyebrow-line .dash{width:26px;height:2px;background:var(--water-500);display:block;}
+  .hero h1{
+    font-size:clamp(2.05rem,4.2vw + .8rem,3.3rem);
+    font-weight:800;color:var(--white);
+    max-width:14ch;
+  }
+  .hero p.lead{
+    margin-top:20px;max-width:46ch;
+    color:var(--sand-200);font-size:1.08rem;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:10px;
+    font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;
+    cursor:pointer;border:1px solid transparent;
+  }
+  .btn svg{width:19px;height:19px;flex:none;}
+  .btn-primary{background:var(--copper-600);color:var(--white);}
+  .btn-primary:hover{background:var(--copper-700);}
+  .btn-ghost{background:transparent;color:var(--sand-100);border-color:rgba(255,255,255,.28);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.55);}
+  .hero-phone-note{
+    margin-top:18px;font-size:.9rem;color:var(--sand-200);opacity:.85;
+  }
+  .hero-phone-note b{color:var(--white);font-family:'Cairo',sans-serif;direction:ltr;display:inline-block;}
+
+  /* Tank illustration */
+  .tank-art{position:relative;}
+  .tank-art svg{width:100%;height:auto;}
+  .water-fill{
+    animation:fillUp 1.8s cubic-bezier(.22,.9,.32,1) .3s both;
+    transform-origin:center;
+  }
+  @keyframes fillUp{
+    0%{transform:translateY(46px);}
+    100%{transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .water-fill{animation:none;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:76px 0;}
+  .section-head{max-width:56ch;margin-bottom:44px;}
+  .section-kicker{
+    color:var(--copper-600);font-weight:700;font-size:.95rem;margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(1.55rem,2.6vw + .6rem,2.15rem);color:var(--teal-900);}
+  .section-head p{margin-top:14px;color:#4B5A54;max-width:52ch;font-size:1.02rem;}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--paper);}
+  .service-list{display:flex;flex-direction:column;}
+  .service-row{
+    display:grid;grid-template-columns:.9fr 1.4fr;
+    gap:40px;align-items:center;
+    padding:36px 0;border-top:1px solid var(--line);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:760px){
+    .service-row{grid-template-columns:1fr;gap:18px;}
+  }
+  .service-visual{
+    background:var(--sand-100);border:1px solid var(--sand-200);
+    border-radius:14px;padding:26px;
+    display:flex;align-items:center;justify-content:center;
+    aspect-ratio:4/3;
+  }
+  .service-visual svg{width:78%;height:78%;}
+  .service-text h3{
+    font-size:1.28rem;color:var(--teal-900);margin-bottom:10px;
+  }
+  .service-text p{color:#4B5A54;max-width:48ch;}
+  .service-tag{
+    display:inline-block;margin-top:14px;
+    font-size:.85rem;font-weight:600;color:var(--teal-600);
+    background:rgba(62,147,166,.1);
+    padding:6px 12px;border-radius:100px;
+  }
+
+  /* ---------- Stats band ---------- */
+  .stats-band{
+    background:var(--teal-800);color:var(--sand-100);
+  }
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:8px;
+  }
+  @media (max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:28px 8px;}}
+  .stat{text-align:center;padding:0 10px;}
+  .stat b{
+    display:block;font-family:'Cairo',sans-serif;font-weight:800;
+    font-size:clamp(1.7rem,2.4vw + .8rem,2.4rem);color:var(--white);
+  }
+  .stat span{display:block;margin-top:6px;font-size:.92rem;color:var(--sand-200);}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--sand-100);}
+  .process-list{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    position:relative;
+  }
+  @media (max-width:860px){.process-list{grid-template-columns:1fr;}}
+  .process-item{
+    position:relative;padding:0 26px 0 0;
+  }
+  @media (max-width:860px){
+    .process-item{padding:0 0 30px 0;}
+    .process-item:not(:last-child){border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:26px;}
+  }
+  .process-item:not(:last-child)::after{
+    content:"";position:absolute;top:19px;left:0;width:1px;height:calc(100% - 40px);
+    background:var(--line);
+  }
+  @media (max-width:860px){.process-item::after{display:none;}}
+  .process-num{
+    font-family:'Cairo',sans-serif;font-weight:800;font-size:1.6rem;
+    color:var(--copper-600);margin-bottom:14px;
+  }
+  .process-item h3{font-size:1.06rem;color:var(--teal-900);margin-bottom:8px;}
+  .process-item p{font-size:.94rem;color:#565f5a;max-width:26ch;}
+
+  /* ---------- Trust / why us ---------- */
+  .why{background:var(--paper);}
+  .why-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;
+  }
+  @media (max-width:760px){.why-grid{grid-template-columns:1fr;}}
+  .why-item{
+    display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line);
+  }
+  .why-item svg{width:26px;height:26px;flex:none;color:var(--teal-600);margin-top:2px;}
+  .why-item h3{font-size:1.02rem;color:var(--teal-900);margin-bottom:5px;}
+  .why-item p{font-size:.93rem;color:#565f5a;}
+
+  /* ---------- Final CTA ---------- */
+  .cta-final{
+    background:var(--teal-900);color:var(--white);
+    position:relative;overflow:hidden;
+  }
+  .cta-final::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(115deg,transparent 40%, rgba(62,147,166,.18) 100%);
+  }
+  .cta-inner{
+    position:relative;z-index:1;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px;
+  }
+  .cta-inner h2{font-size:clamp(1.5rem,2.6vw + .6rem,2.05rem);max-width:20ch;}
+  .cta-inner p{color:var(--sand-200);margin-top:10px;max-width:40ch;}
+  .cta-phone-box{
+    background:var(--copper-600);border-radius:14px;
+    padding:22px 28px;text-align:center;min-width:240px;
+  }
+  .cta-phone-box a{
+    display:block;font-family:'Cairo',sans-serif;font-weight:800;
+    font-size:1.5rem;color:var(--white);direction:ltr;
+  }
+  .cta-phone-box span{display:block;font-size:.85rem;color:rgba(255,255,255,.85);margin-top:6px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:var(--sand-200);padding:36px 0 calc(28px + env(safe-area-inset-bottom,0px));}
+  .foot-inner{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+    align-items:center;font-size:.88rem;
+  }
+  .foot-inner b{color:var(--white);font-family:'Cairo',sans-serif;}
+  .foot-phone{direction:ltr;color:var(--sand-100);}
+
+  /* ---------- Floating call button ---------- */
+  .float-call{
+    position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:20px;
+    z-index:50;
+    background:var(--copper-600);color:var(--white);
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.28);
+  }
+  .float-call svg{width:26px;height:26px;}
+  .float-call:hover{background:var(--copper-700);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C12 2 5 10.2 5 15a7 7 0 0014 0c0-4.8-7-13-7-13z" fill="#F6EFE2"/></svg>
+      </span>
+      <span>
+        <span class="brand-name">رؤية كلين</span>
+        <span class="brand-sub">لتنظيف وعزل الخزانات</span>
+      </span>
+    </div>
+    <a class="topbar-phone" href="tel:0578280785" aria-label="اتصل الآن">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z" fill="currentColor"/></svg>
+      <span>0578280785</span>
+    </a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-grid wrap">
+    <div>
+      <div class="eyebrow-line"><span class="dash"></span> خدمات معتمدة لصيانة الخزانات المنزلية</div>
+      <h1>خزانك أمانة .. وإحنا بنحافظ عليها</h1>
+      <p class="lead">تنظيف وعزل الخزانات الأرضية الاسمنتية والخزانات العلوية الفايبر، بفريق متخصص وأدوات تعقيم معتمدة، عشان مياه بيتك تفضل نضيفة وآمنة طول السنة.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:0578280785">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z" fill="currentColor"/></svg>
+          اتصل الآن
+        </a>
+        <a class="btn btn-ghost" href="#services">
+          خدماتنا
+        </a>
+      </div>
+      <p class="hero-phone-note">للحجز والاستفسار على مدار اليوم — <b>0578280785</b></p>
+    </div>
+
+    <div class="tank-art" aria-hidden="true">
+      <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- roof tank (fiber) -->
+        <rect x="230" y="18" width="150" height="16" rx="3" fill="#0F2E31"/>
+        <g>
+          <ellipse cx="305" cy="70" rx="58" ry="16" fill="#0F2E31"/>
+          <path d="M247 70 v46 a58 16 0 0 0 116 0 v-46 z" fill="#0F2E31"/>
+          <clipPath id="clip-top"><path d="M247 70 v46 a58 16 0 0 0 116 0 v-46 z"/></clipPath>
+          <g clip-path="url(#clip-top)" class="water-fill">
+            <rect x="240" y="96" width="132" height="60" fill="#3E93A6"/>
+            <path d="M240 96 q 15 -7 30 0 t 30 0 t 30 0 t 30 0 t 12 0 v60 h-132 z" fill="#5AA9B9"/>
+          </g>
+          <ellipse cx="305" cy="70" rx="58" ry="16" fill="none" stroke="#1B4A4F" stroke-width="3"/>
+        </g>
+        <!-- pipe -->
+        <path d="M305 132 v58 h-95 v58" fill="none" stroke="#1B4A4F" stroke-width="6" stroke-linecap="round"/>
+        <!-- ground line -->
+        <line x1="10" y1="248" x2="410" y2="248" stroke="#A9BDB6" stroke-width="2" stroke-dasharray="2 7"/>
+        <!-- underground concrete tank -->
+        <rect x="60" y="248" width="220" height="112" rx="6" fill="#0F2E31"/>
+        <clipPath id="clip-ground"><rect x="66" y="254" width="208" height="100" rx="3"/></clipPath>
+        <g clip-path="url(#clip-ground)" class="water-fill">
+          <rect x="66" y="284" width="208" height="70" fill="#3E93A6"/>
+          <path d="M66 284 q 17 -8 34 0 t 34 0 t 34 0 t 34 0 t 34 0 t 20 0 v70 h-208 z" fill="#5AA9B9"/>
+        </g>
+        <rect x="60" y="248" width="220" height="112" rx="6" fill="none" stroke="#EBDFC8" stroke-width="2" opacity=".25"/>
+        <!-- small house silhouette -->
+        <path d="M330 244 v-34 l30 -22 30 22 v34 z" fill="#1B4A4F"/>
+        <rect x="352" y="228" width="16" height="16" fill="#0F2E31"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">خدماتنا</div>
+      <h2>ثلاث خدمات أساسية لحماية خزان مياه بيتك</h2>
+      <p>سواء الخزان تحت الأرض أو فوق السطح، بنقدملك خدمة شاملة من التنظيف للتعقيم للعزل، بمعايير صحية وآمنة على مياه الشرب.</p>
+    </div>
+
+    <div class="service-list">
+      <div class="service-row">
+        <div class="service-visual">
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="60" x2="190" y2="60" stroke="#D9CFB8" stroke-width="2" stroke-dasharray="2 6"/>
+            <rect x="35" y="60" width="130" height="80" rx="5" fill="#1B4A4F"/>
+            <rect x="41" y="66" width="118" height="68" rx="3" fill="#3E93A6"/>
+            <path d="M41 78 q 15 -7 29.5 0 t 29.5 0 t 29.5 0 t 29.5 0 v56h-118z" fill="#5AA9B9"/>
+          </svg>
+        </div>
+        <div class="service-text">
+          <h3>تنظيف الخزانات الأرضية (الاسمنتية)</h3>
+          <p>تفريغ كامل للخزان، إزالة الطمي والرواسب من الجدران والقاع، غسيل بالضغط، وتعقيم شامل بمواد آمنة على مياه الشرب قبل إعادة التعبئة.</p>
+          <span class="service-tag">خزانات تحت الأرض</span>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-visual">
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="55" rx="55" ry="15" fill="#1B4A4F"/>
+            <path d="M45 55 v50 a55 15 0 0 0 110 0 v-50 z" fill="#1B4A4F"/>
+            <clipPath id="s2"><path d="M45 55 v50 a55 15 0 0 0 110 0 v-50 z"/></clipPath>
+            <g clip-path="url(#s2)">
+              <rect x="42" y="78" width="116" height="45" fill="#3E93A6"/>
+              <path d="M42 78 q 14 -7 29 0 t 29 0 t 29 0 t 29 0 v45h-116z" fill="#5AA9B9"/>
+            </g>
+            <ellipse cx="100" cy="55" rx="55" ry="15" fill="none" stroke="#0F2E31" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="service-text">
+          <h3>تنظيف الخزانات العلوية (الفايبر)</h3>
+          <p>صعود لأعلى السطح، تفريغ وتنظيف داخلي كامل لخزان الفايبر جلاس، إزالة الطحالب والترسبات، وتعقيم نهائي مع التأكد من سلامة الغطاء والمخارج.</p>
+          <span class="service-tag">خزانات فوق السطح</span>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="service-visual">
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="60" x2="190" y2="60" stroke="#D9CFB8" stroke-width="2" stroke-dasharray="2 6"/>
+            <rect x="35" y="60" width="130" height="80" rx="5" fill="#1B4A4F"/>
+            <rect x="41" y="66" width="118" height="68" rx="3" fill="#C1592E" opacity=".85"/>
+            <path d="M50 75 h100 M50 92 h100 M50 109 h100 M50 126 h100" stroke="#0F2E31" stroke-width="2" opacity=".35"/>
+          </svg>
+        </div>
+        <div class="service-text">
+          <h3>عزل الخزانات الأرضية (الاسمنتية)</h3>
+          <p>معالجة الشروخ والمسام، وتطبيق طبقات عزل مقاومة للرطوبة والمياه من الداخل، لمنع التسريب وإطالة عمر الخزان وحماية جودة المياه.</p>
+          <span class="service-tag">عزل ومقاومة تسريب</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>+8</b><span>سنوات خبرة ميدانية</span></div>
+      <div class="stat"><b>+600</b><span>خزان تم تنظيفه وعزله</span></div>
+      <div class="stat"><b>24س</b><span>استجابة سريعة للطلبات</span></div>
+      <div class="stat"><b>100٪</b><span>مواد تعقيم آمنة على الشرب</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">خطوات العمل</div>
+      <h2>من مكالمتك لحد تسليم الخزان نظيف</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-item">
+        <div class="process-num">1</div>
+        <h3>اتصال وتحديد الموعد</h3>
+        <p>تكلمنا على الرقم، ونحدد معاك أقرب ميعاد مناسب يناسبك.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">2</div>
+        <h3>معاينة الخزان</h3>
+        <p>فريقنا يوصل ويعاين نوع وحالة الخزان قبل بدء الشغل.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">3</div>
+        <h3>التنظيف والتعقيم</h3>
+        <p>تفريغ، غسيل بالضغط، إزالة الرواسب، وتعقيم كامل للخزان.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">4</div>
+        <h3>الفحص النهائي</h3>
+        <p>مراجعة الجدران والمخارج، وتسليم الخزان جاهز للاستخدام.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">ليه رؤية كلين</div>
+      <h2>خبرة وأمانة في التعامل مع خزان مياه بيتك</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 3 6v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V6l-9-4z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <div><h3>مواد آمنة معتمدة</h3><p>مواد تعقيم مخصصة لخزانات مياه الشرب، مطابقة للمعايير الصحية.</p></div>
+      </div>
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div><h3>سرعة في التنفيذ</h3><p>فريق جاهز يتحرك بسرعة، ويخلص الشغل من غير تعطيل لبيتك.</p></div>
+      </div>
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M4 12l5-5M4 12l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>أدوات ومعدات متخصصة</h3><p>معدات ضغط وشفط مخصصة للخزانات الأرضية والعلوية على السواء.</p></div>
+      </div>
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <div><h3>ضمان على الشغل</h3><p>ضمان على خدمة العزل، مع متابعة لو احتجت أي تعديل بعد التسليم.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>محتاج تنظيف أو عزل خزان دلوقتي؟</h2>
+      <p>اتصل بنا وهنحدد لك ميعاد معاينة في نفس اليوم غالبًا.</p>
+    </div>
+    <div class="cta-phone-box">
+      <a href="tel:0578280785">0578280785</a>
+      <span>اضغط للاتصال المباشر</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div><b>رؤية كلين</b> لتنظيف وعزل الخزانات</div>
+    <div class="foot-phone">0578280785</div>
+    <div>© 2026 جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<a class="float-call" href="tel:0578280785" aria-label="اتصل الآن">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z" fill="currentColor"/></svg>
+</a>
+
+</body>
+</html>
